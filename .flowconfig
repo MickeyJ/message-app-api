@@ -1,0 +1,10 @@
+[libs]
+flow-typed
+
+[ignore]
+.*/node_modules/gulp-flowtype/*
+
+[options]
+esproposal.class_instance_fields=enable
+unsafe.enable_getters_and_setters=true
+suppress_comment= \\(.\\|\n\\)*\\$FlowIgnoreLine
