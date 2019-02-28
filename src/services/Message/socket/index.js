@@ -32,10 +32,13 @@ function createServer(PORT){
     return server;
 }
 
-function createSocket(service, onConnect){
+function createSocket(service){
 
     const {
         server,
+        modules: {
+            events,
+        },
     } = service;
 
     const io = socket(server);
@@ -43,7 +46,10 @@ function createSocket(service, onConnect){
     io.on('connection', (socket) => {
         console.log('socket:', socket);
 
-        onConnect && onConnect(socket)
+        events.on('socket-test', () => {
+            console.log('Emit socket test?');
+        });
+
     });
 
     return io

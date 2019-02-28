@@ -6,6 +6,7 @@ import createSocket from './socket'
 /* modules */
 import middleware from './middleware'
 import db from './db'
+import events from './events'
 
 
 /*
@@ -24,6 +25,7 @@ export default new ApiService({
     modules: {
         db,
         middleware,
+        events,
         socket: createSocket,
     },
 });
