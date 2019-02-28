@@ -6,7 +6,7 @@ export default function(config){
         const {
 
             modules: {
-                socket,
+                // socket,
                 events,
             },
         } = this;

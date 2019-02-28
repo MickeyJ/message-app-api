@@ -1,10 +1,13 @@
 import { fullUrlWithPath } from '../config'
 
-const activeServices = [
-    require('~/services/Message').default,
-];
+
 
 function router(api, logger, server){
+
+    const activeServices = [
+        require('~/services/Message').default(server),
+    ];
+
 
     api.get('/', (req, res) => {
         res.send({

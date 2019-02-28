@@ -33,7 +33,6 @@ export default class ApiService {
     PATHS = config.PATHS;
     _config = config;
     _logger = null;
-    _server = null;
 
     get config(){
         return this._config;
@@ -85,14 +84,6 @@ export default class ApiService {
 
     set logger(value){
         this._logger = value
-    }
-
-    get server(){
-        return this._server
-    }
-
-    set server(value){
-        this._server = value
     }
 
     fullUrlWithPath = (path) => url.resolve(this.domain, path);

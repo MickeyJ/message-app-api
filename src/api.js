@@ -16,6 +16,7 @@ export default function createAPI(port, createServer){
     const api = express();
 
     const server = createServer(api);
+    server.listen(port);
 
     if (config.__DEV__) {
 
@@ -92,7 +93,6 @@ export default function createAPI(port, createServer){
         //     title: 'Api Error',
         // })
     });
-
 
     return server;
 }

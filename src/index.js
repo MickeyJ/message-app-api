@@ -6,8 +6,6 @@ import debug from 'debug'
 import http from 'http'
 import createAPI from './api'
 
-import socketClient from './socket-client'
-
 import {
     PORT,
     NODE_ENV,
@@ -20,12 +18,10 @@ const port = normalizePort(process.env.PORT || PORT);
 
 const server = createAPI(port, http.createServer);
 
-server.listen(port);
-
 server.on('error', onError);
 server.on('listening', onListening);
 
-socketClient();
+// require('./socket-client').default();
 
 export default server
 

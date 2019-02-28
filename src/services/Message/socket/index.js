@@ -1,35 +1,25 @@
 import socket from 'socket.io'
+import timeListeners from './timeListeners'
+import disconnectListeners from './disconnectListeners'
+import { eventLog } from './helpers'
 
-function createSocket(service){
+export default function createSocket(service){
 
-    const {
-        server,
-        modules: {
-            events,
-        },
-    } = service;
+    const io = socket(service.plugins.server);
 
-    const io = socket(server);
+    io.on('connection', (client) => {
 
-    // console.log('Server', io);
+        eventLog(client, 'Connected');
+        console.log('clients count:', io.engine.clientsCount);
 
-    io.on('connection', (socket) => {
+        /* Create Listeners
+        * ------------------*/
+        disconnectListeners(client);
+        timeListeners(client);
 
-        console.log('Connected to socket server');
-
-        events.on('socket-test', () => {
-            console.log('Emit socket test?');
-        });
-
-        socket.on('disconnect', () => {
-            console.log('Disconnected to socket server');
-        })
     });
 
     return io
 }
 
-export default function(service){
 
-    return createSocket(service);
-}

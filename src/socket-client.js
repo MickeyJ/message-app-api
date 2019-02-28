@@ -1,26 +1,23 @@
 import io from 'socket.io-client'
 
-export default function(){
+export default function createSocketClient(){
 
     const socket = io('http://10.0.0.7:3000');
-    // const socket = io('http://localhost:3000');
 
-    // console.log('Client', socket);
 
-    socket.emit('test', 'test');
+    socket.on('connect', function () {
 
-    // socket.on('connect', function () {
-    //
-    //     socket.send('hi');
-    //
-    //     socket.on('message', function (msg) {
-    //         // my msg
-    //         console.log('message', msg);
-    //     });
-    // });
+        console.log('User Connected');
+
+        // socket.send('hi');
+
+        socket.on('test', function (msg) {
+            console.log('test message', msg);
+        });
+    });
 
 
 
 
-    return socket;
+    // return socket;
 }
