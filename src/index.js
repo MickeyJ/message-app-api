@@ -6,6 +6,8 @@ import debug from 'debug'
 import http from 'http'
 import createAPI from './api'
 
+import socketClient from './socket-client'
+
 import {
     PORT,
     NODE_ENV,
@@ -22,6 +24,8 @@ server.listen(port);
 
 server.on('error', onError);
 server.on('listening', onListening);
+
+socketClient();
 
 export default server
 

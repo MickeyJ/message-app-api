@@ -1,32 +1,24 @@
 // http://10.0.0.7:3000
 
-
 export default function(config){
     return function(){
 
         const {
 
             modules: {
-                socket: { io },
+                socket,
                 events,
             },
         } = this;
 
-        // const socket = io('')
-        //
-        // socket.on('connect', function () {
-        //
-        //     socket.send('hi');
-        //
-        //     socket.on('message', function (msg) {
-        //         // my msg
-        //         console.log('message', msg);
-        //     });
-        // });
-
         return {
             ...config,
             handler: (req, res) => {
+
+
+
+                // socket.sockets.emit('hi', 'everyone');
+
 
                 events.emit('socket-test', {
                     message: 'Hello',
