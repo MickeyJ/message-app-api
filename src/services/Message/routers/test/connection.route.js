@@ -15,15 +15,7 @@ export default function(config){
             ...config,
             handler: (req, res) => {
 
-
-
-                // socket.sockets.emit('hi', 'everyone');
-
-
-                events.emit('socket-test', {
-                    message: 'Hello',
-                });
-
+                events.emit('send-message', 'Hello, client.');
 
                 res.status(200).send({
                     message: 'Connection Success',
